@@ -35,3 +35,40 @@ Learn golang with [echo](https://github.com/labstack/echo)
 | amount_idr  | bigint   |
 | description | text     |
 | category_id | int      |
+
+## Endpoints
+
+### GET /
+
+Response
+```
+{
+    "data": {
+        "month": 7,
+        "year": 2020,
+        "incomes": [
+            {
+                "id": 1,
+                "received_at": "2020-07-28T00:00:00Z",
+                "amount_idr": 400000,
+                "description": "daily wage",
+                "category_name": "Paycheck"
+            }
+        ],
+        "expenses": [
+            {
+                "id": 1,
+                "paid_at": "2020-07-28T00:00:00Z",
+                "amount_idr": 10000,
+                "description": "warteg",
+                "category_name": "Food"
+            }
+        ],
+        "start_balance": 10000000,
+        "end_balance": 10390000
+    },
+    "meta": {
+        "http_status": 200
+    }
+}
+```
