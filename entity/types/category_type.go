@@ -6,7 +6,7 @@ import (
 )
 
 // CategoryType is type for category type
-type CategoryType int32
+type CategoryType int16
 
 const (
 	// IncomeType is enum value of category type 'income'
@@ -17,7 +17,7 @@ const (
 
 // Scan override scan on sqlx
 func (c *CategoryType) Scan(value interface{}) error {
-	val := CategoryType(value.(int32))
+	val := CategoryType(value.(int16))
 	if val < 0 || val > 1 {
 		return errors.New("invalid value")
 	}
