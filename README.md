@@ -23,7 +23,7 @@ Learn golang with [echo](https://github.com/labstack/echo)
 | id          | bigint   |
 | paid_at     | datetime |
 | amount_idr  | bigint   |
-| description | text     |
+| description | varchar  |
 | category_id | bigint   |
 
 ### Table incomes
@@ -33,7 +33,7 @@ Learn golang with [echo](https://github.com/labstack/echo)
 | id          | bigint   |
 | received_at | datetime |
 | amount_idr  | bigint   |
-| description | text     |
+| description | varchar  |
 | category_id | bigint   |
 
 ## Endpoints
