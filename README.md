@@ -38,7 +38,12 @@ Learn golang with [echo](https://github.com/labstack/echo)
 
 ## Endpoints
 
-### GET /
+### GET /reports{?month,year}
+
+#### Parameters
+
+- month: 7 (number, optional) - report's month (1-12), default to current month
+- year: 2020 (number, optional) - report's year (4 digit), default to current year
 
 Response
 ```
