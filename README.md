@@ -24,7 +24,7 @@ Learn golang with [echo](https://github.com/labstack/echo)
 | paid_at     | datetime |
 | amount_idr  | bigint   |
 | description | text     |
-| category_id | int      |
+| category_id | bigint   |
 
 ### Table incomes
 
@@ -34,7 +34,7 @@ Learn golang with [echo](https://github.com/labstack/echo)
 | received_at | datetime |
 | amount_idr  | bigint   |
 | description | text     |
-| category_id | int      |
+| category_id | bigint   |
 
 ## Endpoints
 

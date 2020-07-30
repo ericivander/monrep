@@ -8,6 +8,6 @@ type Expense struct {
 	PaidAt       time.Time `json:"paid_at"`
 	AmountIDR    int64     `json:"amount_idr"`
 	Description  string    `json:"description"`
-	CategoryID   int       `json:"-"`
+	CategoryID   int64     `json:"-"`
 	CategoryName string    `json:"category_name"`
 }
