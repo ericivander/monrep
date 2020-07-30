@@ -4,7 +4,7 @@ import "time"
 
 // Expense is struct for income
 type Expense struct {
-	ID           int       `json:"id"`
+	ID           int64     `json:"id"`
 	PaidAt       time.Time `json:"paid_at"`
 	AmountIDR    int64     `json:"amount_idr"`
 	Description  string    `json:"description"`

@@ -8,11 +8,11 @@ Learn golang with [echo](https://github.com/labstack/echo)
 
 ### Table categories
 
-| column | type         |
-|--------|--------------|
-| id     | serial       |
-| name   | varchar(255) |
-| type   | smallint     |
+| column | type     |
+|--------|----------|
+| id     | bigint   |
+| name   | varchar  |
+| type   | smallint |
 
 - Column `type` is enum with value 0: 'income', 1: 'expense'
 
@@ -20,7 +20,7 @@ Learn golang with [echo](https://github.com/labstack/echo)
 
 | column      | type     |
 |-------------|----------|
-| id          | serial   |
+| id          | bigint   |
 | paid_at     | datetime |
 | amount_idr  | bigint   |
 | description | text     |
@@ -30,7 +30,7 @@ Learn golang with [echo](https://github.com/labstack/echo)
 
 | column      | type     |
 |-------------|----------|
-| id          | serial   |
+| id          | bigint   |
 | received_at | datetime |
 | amount_idr  | bigint   |
 | description | text     |

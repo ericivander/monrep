@@ -7,7 +7,7 @@ import (
 
 // Category is struct for category on database
 type Category struct {
-	ID   int    `db:"id"`
+	ID   int64  `db:"id"`
 	Name string `db:"name"`
 	Type int16  `db:"type"`
 }
