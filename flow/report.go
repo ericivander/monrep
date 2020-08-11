@@ -26,7 +26,7 @@ func NewReportProvider(cat CategoryRepository, inc IncomeRepository, exp Expense
 // GetMonthlyReport return report on specific month and year
 func (r *ReportProvider) GetMonthlyReport(month int, year int) (*entity.Report, error) {
 	categories, _ := r.categoryRepo.GetCategories()
-	var categoriesName map[int]string
+	categoriesName := make(map[int64]string, 0)
 	for _, category := range categories {
 		categoriesName[category.ID] = category.Name
 	}
