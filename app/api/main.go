@@ -12,13 +12,6 @@ import (
 )
 
 func main() {
-	// Echo instance
-	e := echo.New()
-
-	// Middleware
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
-
 	cfg := config.NewConfig()
 
 	postgresDb, err := postgres.NewPostgres(&cfg.Postgres)
@@ -33,6 +26,13 @@ func main() {
 	reportFlow := flow.NewReportProvider(categoryRepo, incomeRepo, expenseRepo)
 
 	reportHandler := handler.NewReportHandler(reportFlow)
+
+	// Echo instance
+	e := echo.New()
+
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
 	// Routes
 	e.GET("/", hello)
