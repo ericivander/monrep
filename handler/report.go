@@ -29,7 +29,7 @@ func (r *ReportHandler) GetReports(c echo.Context) error {
 	if err != nil {
 		year = currentYear
 	}
-	if year < 1 {
+	if year < 1 || year > 9999 {
 		return errors.New("invalid year")
 	}
 
