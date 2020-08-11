@@ -13,6 +13,11 @@ type ExpenseProvider struct {
 	db *sqlx.DB
 }
 
+// NewExpense initiate ExpenseProvider
+func NewExpense(db *sqlx.DB) *ExpenseProvider {
+	return &ExpenseProvider{db: db}
+}
+
 func (p *ExpenseProvider) fetch(query string, args ...interface{}) ([]*entity.Expense, error) {
 	rows, err := p.db.Queryx(query, args...)
 	if err != nil {

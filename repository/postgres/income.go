@@ -13,6 +13,11 @@ type IncomeProvider struct {
 	db *sqlx.DB
 }
 
+// NewIncome initiate IncomeProvider
+func NewIncome(db *sqlx.DB) *IncomeProvider {
+	return &IncomeProvider{db: db}
+}
+
 func (p *IncomeProvider) fetch(query string, args ...interface{}) ([]*entity.Income, error) {
 	rows, err := p.db.Queryx(query, args...)
 	if err != nil {

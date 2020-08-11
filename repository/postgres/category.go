@@ -11,6 +11,11 @@ type CategoryProvider struct {
 	db *sqlx.DB
 }
 
+// NewCategory initiate CategoryProvider
+func NewCategory(db *sqlx.DB) *CategoryProvider {
+	return &CategoryProvider{db: db}
+}
+
 func (p *CategoryProvider) fetch(query string, args ...interface{}) ([]*entity.Category, error) {
 	rows, err := p.db.Queryx(query, args...)
 	if err != nil {
