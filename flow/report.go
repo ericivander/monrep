@@ -25,14 +25,25 @@ func NewReportProvider(cat CategoryRepository, inc IncomeRepository, exp Expense
 
 // GetMonthlyReport return report on specific month and year
 func (r *ReportProvider) GetMonthlyReport(month int, year int) (*entity.Report, error) {
-	categories, _ := r.categoryRepo.GetCategories()
+	categories, err := r.categoryRepo.GetCategories()
+	if err != nil {
+		return nil, err
+	}
+
 	categoriesName := make(map[int64]string, 0)
 	for _, category := range categories {
 		categoriesName[category.ID] = category.Name
 	}
 
-	incomes, _ := r.incomeRepo.GetIncomesByMonthYear(month, year)
-	lastTotalIncome, _ := r.incomeRepo.GetTotalIncomeBeforeMonthYear(month, year)
+	incomes, err := r.incomeRepo.GetIncomesByMonthYear(month, year)
+	if err != nil {
+		return nil, err
+	}
+
+	lastTotalIncome, err := r.incomeRepo.GetTotalIncomeBeforeMonthYear(month, year)
+	if err != nil {
+		return nil, err
+	}
 
 	totalIncome := lastTotalIncome
 	for _, income := range incomes {
@@ -40,8 +51,15 @@ func (r *ReportProvider) GetMonthlyReport(month int, year int) (*entity.Report, 
 		income.CategoryName = categoriesName[income.CategoryID]
 	}
 
-	expenses, _ := r.expenseRepo.GetExpensesByMonthYear(month, year)
-	lastTotalExpense, _ := r.expenseRepo.GetTotalExpenseBeforeMonthYear(month, year)
+	expenses, err := r.expenseRepo.GetExpensesByMonthYear(month, year)
+	if err != nil {
+		return nil, err
+	}
+
+	lastTotalExpense, err := r.expenseRepo.GetTotalExpenseBeforeMonthYear(month, year)
+	if err != nil {
+		return nil, err
+	}
 
 	totalExpense := lastTotalExpense
 	for _, expense := range expenses {
