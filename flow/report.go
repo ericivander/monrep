@@ -45,7 +45,7 @@ func (r *ReportProvider) GetMonthlyReport(month int, year int) (*entity.Report, 
 
 	totalExpense := lastTotalExpense
 	for _, expense := range expenses {
-		totalExpense = expense.AmountIDR
+		totalExpense += expense.AmountIDR
 		expense.CategoryName = categoriesName[expense.CategoryID]
 	}
 
