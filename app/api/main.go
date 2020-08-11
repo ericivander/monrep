@@ -3,6 +3,10 @@ package main
 import (
 	"net/http"
 
+	"github.com/ericivander/monrep/config"
+	"github.com/ericivander/monrep/flow"
+	"github.com/ericivander/monrep/handler"
+	"github.com/ericivander/monrep/repository/postgres"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -15,8 +19,24 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	cfg := config.NewConfig()
+
+	postgresDb, err := postgres.NewPostgres(&cfg.Postgres)
+	if err != nil {
+		panic(err)
+	}
+
+	categoryRepo := postgres.NewCategory(postgresDb.Db)
+	incomeRepo := postgres.NewIncome(postgresDb.Db)
+	expenseRepo := postgres.NewExpense(postgresDb.Db)
+
+	reportFlow := flow.NewReportProvider(categoryRepo, incomeRepo, expenseRepo)
+
+	reportHandler := handler.NewReportHandler(reportFlow)
+
 	// Routes
 	e.GET("/", hello)
+	e.GET("/reports", reportHandler.GetReports)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":2234"))
